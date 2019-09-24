@@ -10,9 +10,13 @@
 (h/defhandler handler
 
   (h/command-fn
+    "stop"
+    (fn [{{id :id :as chat} :chat}]
+      (t/send-text token id "You can't stop me")))
+
+  (h/command-fn
     "start"
     (fn [{{id :id :as chat} :chat}]
-      (t/send-text token id "Хай")
       (println "Bot joined new chat: " chat))))
 
 (defn -main []
